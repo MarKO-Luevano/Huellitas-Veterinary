@@ -1,0 +1,15 @@
+---
+# Volumen persistente: los datos de la DB sobreviven si el pod se reinicia
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mariadb-pvc
+  namespace: huellitas
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  # En AWS EKS esto usara automaticamente un EBS volume
+  # En Minikube/local usa el storage por defecto

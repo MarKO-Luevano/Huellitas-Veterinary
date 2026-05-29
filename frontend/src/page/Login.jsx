@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useAuth } from '../context/AuthContext'
 import api from '../api/axios'
 import { bounceIn, slideDown, slideUp, itemFadeUp, containerStagger } from '../animations'
-import logo from '../assets/logo.png'
+import logo from '../assets/Logo.png'
 
 export default function Login() {
 const [correo, setCorreo] = useState('')

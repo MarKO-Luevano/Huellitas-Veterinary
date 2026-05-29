@@ -1,0 +1,57 @@
+---
+# POD 3: Frontend React/Vite con Nginx
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: huellitas
+  labels:
+    app: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          # IMPORTANTE: Cambia esto por tu imagen
+          # Ejemplo: tu_usuario/huellitas-frontend:latest
+          image: huellitas-frontend:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "128Mi"
+              cpu: "200m"
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 5
+
+---
+# Servicio del frontend - LoadBalancer para acceso externo
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: huellitas
+spec:
+  selector:
+    app: frontend
+  ports:
+    - port: 80
+      targetPort: 80
+  # LoadBalancer = AWS crea un ELB automaticamente con IP publica
+  # En local (Minikube) usa: minikube service frontend-service -n huellitas
+  type: LoadBalancer
