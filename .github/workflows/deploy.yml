@@ -1,0 +1,45 @@
+name: Deploy Huellitas a EC2 con Kubernetes
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Desplegar en EC2
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/ec2_key
+          chmod 600 ~/.ssh/ec2_key
+          ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Desplegar en EC2 con Kubernetes
+        run: |
+          ssh -i ~/.ssh/ec2_key ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+
+            echo "Actualizando codigo desde GitHub..."
+            cd ~/Huellitas-Veterinary
+            git pull origin main
+
+            echo "Reiniciando pods en Kubernetes..."
+            kubectl rollout restart deployment/backend -n huellitas
+            kubectl rollout restart deployment/frontend -n huellitas
+
+            echo "Esperando que los pods esten listos..."
+            kubectl rollout status deployment/backend -n huellitas
+            kubectl rollout status deployment/frontend -n huellitas
+
+            echo "Estado actual de los pods:"
+            kubectl get pods -n huellitas
+
+            echo "Despliegue completado exitosamente."
+          EOF
