@@ -31,6 +31,7 @@ public class CalleController {
         return calleService.findAll();
     }
 
+    //hola
     @GetMapping("/{id}")
     public ResponseEntity<Calle> getById(@PathVariable Integer id) {
         return calleService.findById(id)
@@ -43,6 +44,7 @@ public class CalleController {
         return calleService.findByColonia(idColonia);
     }
 
+    //XD
     @PostMapping
     public Calle create(@RequestBody Calle calle) {
         return calleService.save(calle);
