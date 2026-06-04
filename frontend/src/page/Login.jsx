@@ -51,7 +51,7 @@ const navigate = useNavigate()
 
   return (
     <motion.div
-      className="min-h-screen bg-gradient-to-br from-green-900 to-green-700 flex items-center justify-center p-4"
+      className="min-h-screen bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center p-4"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
