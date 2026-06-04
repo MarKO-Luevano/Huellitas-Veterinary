@@ -45,10 +45,10 @@ jobs:
             git pull origin main
 
             echo "Forzando a Kubernetes a descargar la nueva imagen de Docker Hub..."
-            kubectl rollout restart deployment/frontend -n huellitas
+            sudo kubectl rollout restart deployment/frontend -n huellitas
             
             echo "Esperando que los pods estén listos..."
-            kubectl rollout status deployment/frontend -n huellitas
+            sudo kubectl rollout status deployment/frontend -n huellitas
 
             echo "Despliegue completado exitosamente."
           EOF
