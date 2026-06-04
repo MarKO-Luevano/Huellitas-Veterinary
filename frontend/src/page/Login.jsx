@@ -24,7 +24,7 @@ const navigate = useNavigate()
       const usuario = response.data
 
       if (usuario.password !== password) {
-        setError('Esa q')
+        setError('Contraseña incorrecta')
         setLoading(false)
         return
       }
