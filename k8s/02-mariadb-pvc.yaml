@@ -1,5 +1,5 @@
 ---
-# Volumen persistente: los datos de la DB sobreviven si el pod se reinicia
+# Volumen persistente: los datos de la base de datos sobreviven si el pod se reinicia
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
