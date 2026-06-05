@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: huellitas-frontend:latest
+          image: marcohub/huellitas-frontend:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
