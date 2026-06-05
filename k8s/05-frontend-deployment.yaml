@@ -19,8 +19,6 @@ spec:
     spec:
       containers:
         - name: frontend
-          # IMPORTANTE: Cambia esto por tu imagen
-          # Ejemplo: tu_usuario/huellitas-frontend:latest
           image: huellitas-frontend:latest
           imagePullPolicy: Never
           ports:

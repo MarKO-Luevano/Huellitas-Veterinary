@@ -24,17 +24,18 @@ kubectl apply -f 02-mariadb-pvc.yaml
 echo "[4/6] Desplegando MariaDB..."
 kubectl apply -f 03-mariadb-deployment.yaml
 
-echo "      Esperando a que MariaDB este lista (puede tardar ~30s)..."
+echo "      Esperando a que MariaDB este lista..."
 kubectl rollout status deployment/mariadb -n huellitas
 
 echo "[5/6] Desplegando Backend Spring Boot..."
 kubectl apply -f 04-backend-deployment.yaml
 
-echo "      Esperando al Backend (puede tardar ~60s)..."
+echo "      Esperando al Backend..."
 kubectl rollout status deployment/backend -n huellitas
 
 echo "[6/6] Desplegando Frontend React..."
 kubectl apply -f 05-frontend-deployment.yaml
+kubectl rollout restart deployment/frontend -n huellitas
 kubectl rollout status deployment/frontend -n huellitas
 
 echo ""

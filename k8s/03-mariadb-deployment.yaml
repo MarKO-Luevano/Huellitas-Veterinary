@@ -8,7 +8,7 @@ metadata:
   labels:
     app: mariadb
 spec:
-  replicas: 1   # Solo 1 replica para DB (necesita StatefulSet para HA)
+  replicas: 1
   selector:
     matchLabels:
       app: mariadb
