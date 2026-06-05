@@ -61,7 +61,7 @@ const navigate = useNavigate()
         className="absolute top-10 left-10 w-32 h-32 bg-blue-500 opacity-20 rounded-full"
         animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-      />
+	  
       <motion.div
         className="absolute bottom-10 right-10 w-48 h-48 bg-blue-400 opacity-10 rounded-full"
         animate={{ scale: [1, 1.15, 1], rotate: [0, -60, 0] }}
