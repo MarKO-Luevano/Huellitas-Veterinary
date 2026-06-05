@@ -49,9 +49,9 @@ const navigate = useNavigate()
     }
   }
 //xd
-  return (
+return (
     <motion.div
-      className="min-h-screen bg-blue-to-br from-blue-900 to-blue-700 flex items-center justify-center p-4"
+      className="min-h-screen bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center p-4"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
@@ -68,12 +68,13 @@ const navigate = useNavigate()
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
       />
 
+      {/* Tarjeta Blanca Contenedora */}
       <motion.div
         className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 relative z-10"
         variants={bounceIn}
         initial="hidden"
         animate="visible"
-      
+      >
         {/* Logo */}
         <motion.div
           className="text-center mb-8"
@@ -141,7 +142,7 @@ const navigate = useNavigate()
                 exit={{ opacity: 0, x: 10 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                ⚠️ {error}
+                ⚠ {error}
               </motion.div>
             )}
           </AnimatePresence>
@@ -165,7 +166,6 @@ const navigate = useNavigate()
             </motion.button>
           </motion.div>
         </motion.form>
-      </motion.div>
-    </motion.div>
-  )
-}
+      </motion.div> {/* Cierre correcto de Tarjeta Blanca */}
+    </motion.div> {/* Cierre correcto de Contenedor Principal */}
+  );
