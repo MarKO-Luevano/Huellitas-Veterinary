@@ -7,13 +7,13 @@ import { bounceIn, slideDown, slideUp, itemFadeUp, containerStagger } from '../a
 import logo from '../assets/Logo.png'
 
 export default function Login() {
-const [correo, setCorreo] = useState('')
-const [password, setPassword] = useState('')
-const [error, setError] = useState('')
-const [loading, setLoading] = useState(false)
+  const [correo, setCorreo] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
 
-const { login } = useAuth()
-const navigate = useNavigate()
+  const { login } = useAuth()
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -48,8 +48,8 @@ const navigate = useNavigate()
       setLoading(false)
     }
   }
-//xd
-return (
+
+  return (
     <motion.div
       className="min-h-screen bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center p-4"
       initial={{ opacity: 0 }}
@@ -166,6 +166,7 @@ return (
             </motion.button>
           </motion.div>
         </motion.form>
-      </motion.div> {/* Cierre correcto de Tarjeta Blanca */}
-    </motion.div> {/* Cierre correcto de Contenedor Principal */}
-  );
+      </motion.div>
+    </motion.div>
+  )
+}
